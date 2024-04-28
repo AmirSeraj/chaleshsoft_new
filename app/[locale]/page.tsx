@@ -8,7 +8,6 @@ export default async function Home({
   params: { locale: string };
 }) {
   const { t } = await initTranslations(locale, ["home"]);
-  console.log("defrfggg", locale);
 
   return (
     <div className="home_container">
