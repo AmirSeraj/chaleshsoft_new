@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "@/components/Footer/Footer";
 import clsx from "clsx";
 import { Roboto, Noto_Sans_Arabic } from "next/font/google";
+import i18nConfig from "@/i18nConfig";
+import { dir } from "i18next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,13 +33,19 @@ const roboto = Roboto({
   display: "swap",
 });
 
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ locale }));
+}
+
 export default function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
   return (
-    <html lang="en">
+    <html lang={locale} dir={dir(locale)}>
       <body
         className={clsx(
           arabic.variable,

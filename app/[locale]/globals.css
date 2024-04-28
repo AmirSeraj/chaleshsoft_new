@@ -36,9 +36,39 @@
   position: relative;
 }
 
-.not-found-container{
+.not-found-container {
   width: 100%;
   display: flex;
   justify-content: center;
   height: calc(100vh - 466px);
+}
+
+
+/* const gradientStyle = {
+  backgroundImage: `
+  radial-gradient(circle at 100% 0%, #6a2c95a6 0%, transparent 8% ),
+  radial-gradient(circle at 0% 10%, #6a2c95a6 0%, transparent 5% ),
+  radial-gradient(circle at 100% 20%, #6a2c95a6 0%, transparent 6% ),
+  radial-gradient(circle at 0% 32%, #6a2c95a6 0%, transparent 7% ),
+  radial-gradient(circle at 100% 45%, #6a2c95a6 0%, transparent 8% ),
+  radial-gradient(circle at 0% 59%, #6a2c95a6 0%, transparent 8% ),
+  radial-gradient(circle at 100% 80%, #6a2c95a6 0%, transparent 8% ),
+  radial-gradient(circle at 0% 95%, #6a2c95a6 0%, transparent 3% ),
+  radial-gradient(circle at 0% 100%, #6a2c95a6 0%, #06051a 8%)`,
+}; */
+
+.home_container {
+  background-image: radial-gradient(
+      circle at 100% 0%,
+      #6a2c95a6 0%,
+      transparent 8%
+    ),
+    radial-gradient(circle at 0% 10%, #6a2c95a6 0%, transparent 5%),
+    radial-gradient(circle at 100% 20%, #6a2c95a6 0%, transparent 6%),
+    radial-gradient(circle at 0% 32%, #6a2c95a6 0%, transparent 7%),
+    radial-gradient(circle at 100% 45%, #6a2c95a6 0%, transparent 8%),
+    radial-gradient(circle at 0% 59%, #6a2c95a6 0%, transparent 8%),
+    radial-gradient(circle at 100% 80%, #6a2c95a6 0%, transparent 8%),
+    radial-gradient(circle at 0% 95%, #6a2c95a6 0%, transparent 3%),
+    radial-gradient(circle at 0% 100%, #6a2c95a6 0%, #06051a 8%);
 }

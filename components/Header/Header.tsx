@@ -5,15 +5,19 @@ import Tabs from "./Tabs";
 import { BiChevronRight } from "react-icons/bi";
 import LangButton from "./LangButton";
 import MobileNavigation from "./MobileNavigation";
+import initTranslations from "@/app/i18n";
 
-const Header = () => {
+const Header = async ({ locale }: { locale: string }) => {
+  
+  const { t } = await initTranslations(locale, ["common"]);
+
   return (
     // bg-gradient-to-r from-[#06051a] from-60% to-[#4338CA]
     <header className="w-full px-[8.5%] pt-10">
       <div className="h-[150px] w-full flex items-center justify-between">
         <div className="flex gap-5">
           <ImgComponent />
-          <Tabs />
+          <Tabs t={t} />
         </div>
 
         <div className="flex gap-2 items-center">
