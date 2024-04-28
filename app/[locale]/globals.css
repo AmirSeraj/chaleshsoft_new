@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Your custom styles go here */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins,wght@0,400;0,500;0,600;&display=swap");
+
+.flip-card-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.slider--custom {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 0px;
+}
+
+.slider--custom .swiper--container {
+  position: relative;
+}
+
+.slider--custom .swiper-slide {
+  width: 320px;
+  height: auto;
+  position: relative;
+}
+
+.not-found-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 466px);
+}
