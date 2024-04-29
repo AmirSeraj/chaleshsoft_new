@@ -15,7 +15,6 @@ const LangButton = () => {
   const currentPathname = usePathname();
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
-  console.log('current',currentLocale);
 
   const handleMouseEnter = () => {
     setIsDropDown(true);
@@ -28,7 +27,7 @@ const LangButton = () => {
     // }, 500);
   };
 
-  const classes = `flex justify-center text-white items-center gap-2 duration-200 mt-[12px] ${
+  const classes = `flex justify-center text-white items-center gap-2 duration-200 ${
     isDropDown && "!border-slate-500"
   }`;
 
@@ -66,7 +65,7 @@ const LangButton = () => {
 
   return (
     <div
-      className="relative hidden md:block h-[70px]"
+      className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -77,7 +76,7 @@ const LangButton = () => {
       {isDropDown && (
         <div
           onMouseLeave={handleMouseLeave}
-          className="bg-[#E5E7EB] z-[900000] opacity-[0.9] absolute top-[62px] px-[15px] py-[20px] border border-slate-700 rounded-2xl w-[170px] h-[145px] shadow-sm shadow-slate-400 flex flex-col gap-4"
+          className="bg-[#E5E7EB] z-[900000] opacity-[0.9] absolute top-[50px] px-[15px] py-[20px] border border-slate-700 rounded-2xl w-[170px] h-[145px] shadow-sm shadow-slate-400 flex flex-col gap-4"
         >
           <div
             className="flex gap-3 items-center cursor-pointer border border-transparent hover:border-slate-400 rounded-md px-[0.4rem] p-1"

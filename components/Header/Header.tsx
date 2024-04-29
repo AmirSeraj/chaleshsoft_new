@@ -6,9 +6,9 @@ import { BiChevronRight } from "react-icons/bi";
 import LangButton from "./LangButton";
 import MobileNavigation from "./MobileNavigation";
 import initTranslations from "@/app/i18n";
+import clsx from "clsx";
 
-const Header = async ({ locale }: { locale: string }) => {
-  
+const Header = async ({ locale }: { locale?: string }) => {
   const { t } = await initTranslations(locale, ["common"]);
 
   return (
@@ -23,8 +23,10 @@ const Header = async ({ locale }: { locale: string }) => {
         <div className="flex gap-2 items-center">
           <LangButton />
           <ButtonCustom className="text-white flex items-center gap-1 border shadow !border-slate-500">
-            <Link href="/">Go to Dashboard</Link>
-            <BiChevronRight size={20} />
+            <Link href="/dashboard">{t("common:dashboard")}</Link>
+            <div className={clsx(locale === "fa" && "rotate-180")}>
+              <BiChevronRight size={20} />
+            </div>
           </ButtonCustom>
           {/* Mobile navigation */}
           <MobileNavigation />

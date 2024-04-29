@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer/Footer";
 import clsx from "clsx";
 import { Roboto, Noto_Sans_Arabic } from "next/font/google";
 import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
-
-const inter = Inter({ subsets: ["latin"] });
+import TranslationProvider from "@/components/providers/TranslationsProvider";
+import initTranslations from "../i18n";
 
 export const metadata: Metadata = {
   title: "Chalesh Soft",
@@ -37,13 +36,16 @@ export function generateStaticParams() {
   return i18nConfig.locales.map((locale) => ({ locale }));
 }
 
-export default function RootLayout({
+const i18nNamespaces = ["home"];
+
+export default async function RootLayout({
   children,
   params: { locale },
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  const { t, resources } = await initTranslations(locale, i18nNamespaces);
   return (
     <html lang={locale} dir={dir(locale)}>
       <body
@@ -53,8 +55,14 @@ export default function RootLayout({
           "min-h-screen flex flex-col w-full"
         )}
       >
-        {children}
-        <Footer />
+        <TranslationProvider
+          locale={locale}
+          resources={resources}
+          namespaces={i18nNamespaces}
+        >
+          {children}
+          <Footer />
+        </TranslationProvider>
       </body>
     </html>
   );
