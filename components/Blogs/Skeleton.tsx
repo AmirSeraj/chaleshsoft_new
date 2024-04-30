@@ -21,22 +21,21 @@ const Skeleton = ({
   const current_pageRef = useRef(null);
 
   let page = 1;
-  async function loadMoreArticles() {
-    const next = page + 1;
-    const articles = await fetchAllArticles(next);
-
-    console.log("fff", articles?.data);
-
-    current_pageRef.current = articles?.current_page;
-
-    if (articles?.current_page < last_page) {
-      setData((prev) => [...(prev?.length ? prev : []), ...articles?.data]);
-    }
-  }
 
   useEffect(() => {
+    async function loadMoreArticles() {
+      const next = page + 1;
+      const articles = await fetchAllArticles(next);
+      current_pageRef.current = articles?.current_page;
+      if (articles?.current_page < last_page) {
+        let a = data;
+        a = a.concat(articles.data);
+        setData(a); //(prev) => [...(prev?.length ? prev : []), ...articles?.data]
+      }
+      page++;
+    }
     if (inView) {
-      loadMoreArticles();
+       loadMoreArticles();
     }
   }, [inView]);
 
