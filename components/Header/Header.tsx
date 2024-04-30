@@ -7,9 +7,11 @@ import LangButton from "./LangButton";
 import MobileNavigation from "./MobileNavigation";
 import initTranslations from "@/app/i18n";
 import clsx from "clsx";
+import { getSession } from "@/lib/actions/getSession";
 
 const Header = async ({ locale }: { locale?: string }) => {
   const { t } = await initTranslations(locale, ["common"]);
+  const session = await getSession();
 
   return (
     // bg-gradient-to-r from-[#06051a] from-60% to-[#4338CA]
@@ -23,7 +25,9 @@ const Header = async ({ locale }: { locale?: string }) => {
         <div className="flex gap-2 items-center">
           <LangButton />
           <ButtonCustom className="text-white flex items-center gap-1 border shadow !border-slate-500">
-            <Link href="/dashboard">{t("common:dashboard")}</Link>
+            <Link href={session?.isLoggedIn ? "/dashboard" : "/login"}>
+              {t("common:dashboard")}
+            </Link>
             <div className={clsx(locale === "fa" && "rotate-180")}>
               <BiChevronRight size={20} />
             </div>

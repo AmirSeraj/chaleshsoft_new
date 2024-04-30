@@ -1,14 +1,14 @@
 "use server";
 
-import { LoginSchema } from "@/schemas";
+import { LoginSchema } from "@/schema";
 import * as z from "zod";
 import { getSession } from "../getSession";
 import { LoggedInUser } from "./loggedInUser";
 import { redirect } from "next/navigation";
 
 /**PATH */
-const sanctum_path = process.env.NEXT_APP_URL + "sanctum/csrf-cookie";
-const login_path = process.env.NEXT_APP_URL + "api/auth/login";
+const sanctum_path = process.env.NEXT_PUBLIC_APP_URL_SANCTUM + "/sanctum/csrf-cookie";
+const login_path = process.env.NEXT_PUBLIC_APP_URL_API + "/auth/login";
 /**PATH */
 
 /**login */
@@ -35,6 +35,8 @@ export const login: (values: z.infer<typeof LoginSchema>) => Promise<{
       method: "GET",
       credentials: "include", //Include credentials for cross-origin requests
     });
+
+    console.log(csrf_response);
 
     if (csrf_response.ok) {
       try {

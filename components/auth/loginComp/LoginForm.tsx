@@ -29,14 +29,13 @@ const LoginForm = ({ locale }: { locale: string }) => {
     setError("");
     setSuccess("");
     setLoading(true);
-
-    // startTransition(() => {
-    //   login(values).then((data) => {
-    //     setError(data?.error);
-    //     setSuccess(data?.success);
-    //     setLoading(false);
-    //   });
-    // });
+    startTransition(() => {
+      login(values).then((data) => {
+        setError(data?.error);
+        setSuccess(data?.success);
+        setLoading(false);
+      });
+    });
   };
 
   return (

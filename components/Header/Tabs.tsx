@@ -1,13 +1,15 @@
+import { getSession } from "@/lib/actions/getSession";
 import Link from "next/link";
+import LogoutForm from "../auth/LogoutForm";
 
 const Tabs = async ({ t }: any) => {
-  const session = true;
+  const session = await getSession();
   return (
     <div className="gap-7 items-center text-white text-[15px] md:flex hidden">
-      {session ? (
+      {session?.isLoggedIn ? (
         <>
-          <Link href={"/dahboard"}>Amir</Link>
-          <div>{t("logout")}</div>
+          <Link href={"/dashboard"}>{session?.user?.name}</Link>
+          <LogoutForm title={t("logout")} />
         </>
       ) : (
         <Link href={"/login"}>{t("login")}</Link>

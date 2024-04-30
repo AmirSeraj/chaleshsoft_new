@@ -32,12 +32,12 @@ const RegisterForm = ({ locale }: { locale: string }) => {
     setError("");
     setSuccess("");
 
-    // startTransition(() => {
-    //   register(values).then((data) => {
-    //     setError(data?.error);
-    //     setSuccess(data?.success);
-    //   });
-    // });
+    startTransition(() => {
+      register(values).then((data) => {
+        setError(data?.error);
+        setSuccess(data?.success);
+      });
+    });
   };
 
   return (

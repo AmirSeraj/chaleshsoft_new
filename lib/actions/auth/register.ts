@@ -1,12 +1,12 @@
 'use server'
 
-import { RegisterSchema } from "@/schemas";
+import { RegisterSchema } from "@/schema";
 import * as z from "zod";
 import { getSession } from "../getSession";
 
 /**PATH */
-const sanctum_path = process.env.NEXT_APP_URL + "sanctum/csrf-cookie";
-const register_path = process.env.NEXT_APP_URL + "api/auth/register";
+const sanctum_path = process.env.NEXT_PUBLIC_APP_URL_SANCTUM + "/sanctum/csrf-cookie";
+const register_path = process.env.NEXT_PUBLIC_APP_URL_API + "/auth/register";
 /**PATH */
 
 /**register user */

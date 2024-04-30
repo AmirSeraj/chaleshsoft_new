@@ -1,0 +1,9 @@
+.container {
+  background-image: radial-gradient(
+      circle at 100% 0%,
+      #6a2c95a6 0%,
+      transparent 25%
+    ),
+    radial-gradient(circle at 0% 70%, #6a2c95a6 -20%, #06051a 20%);
+    min-height: calc(100vh - 276px);
+}
