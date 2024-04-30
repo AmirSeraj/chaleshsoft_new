@@ -8,6 +8,7 @@ const BlogsList = async ({locale}) => {
   // console.log("data", data);
 
   const main_url = process.env.NEXT_PUBLIC_APP_URL_SANCTUM;
+
   return (
     <div className="w-full flex flex-col gap-3">
       {data?.map((blog) => (

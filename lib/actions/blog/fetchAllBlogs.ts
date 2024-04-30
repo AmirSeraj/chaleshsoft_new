@@ -1,9 +1,11 @@
 "use server";
 
 /**PATH */
-const path = process.env.NEXT_PUBLIC_APP_URL_API + '/front/landing_articles?page=';
+const path =
+  process.env.NEXT_PUBLIC_APP_URL_API + "/front/landing_articles?page=";
 
 export const fetchAllArticles = async (page: number) => {
+
   try {
     const res = await fetch(path + page, {
       next: {
