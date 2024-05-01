@@ -6,6 +6,9 @@ const path =
 
 export const fetchAllArticles = async (page: number) => {
 
+  console.log('ddd',path + page);
+  
+
   try {
     const res = await fetch(path + page, {
       next: {
@@ -17,9 +20,11 @@ export const fetchAllArticles = async (page: number) => {
       },
     });
     const response = await res.json();
+    console.log('resss',response);
+    
     return response;
     // return { current_page, last_page, data } = response;
   } catch (error) {
-    console.log(error);
+    console.log('err',error);
   }
 };

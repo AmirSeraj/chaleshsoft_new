@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import TruncatedSummary from "./TruncatedSummary";
 import initTranslations from "@/app/i18n";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 const i18NameSpaces = ["blog"];
 
@@ -13,7 +14,7 @@ interface CustomBlogProps {
   article_created_at: string;
   min_read: number;
   alt: string;
-  authorImg?: string;
+  authorImg?: string | StaticImport;
   authorName: string;
   key:number,
   href: string;

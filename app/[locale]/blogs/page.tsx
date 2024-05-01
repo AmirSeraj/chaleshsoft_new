@@ -21,21 +21,21 @@ const Blog = async ({
 }) => {
   const { t } = await initTranslations(locale, i18Namespaces);
 
-  const users = await fetchAllArticles((searchParams?.page as number) || 1);
+  const blogs = await fetchAllArticles((searchParams?.page as number) || 1);
 
-  const current_page = searchParams?.page || users?.current_page;
+  const current_page = searchParams?.page || blogs?.current_page;
 
   return (
     <div className="xl:px-[8.5%] lg:px-[5.5%] md:px-[3%] sm:px-[2%] px-[5px] flex lg:flex-row flex-col-reverse 2xl:gap-10 xl:gap-7 gap-5 py-5">
       <div className="lg:w-[70%] w-full p-1">
         <Suspense fallback={<InitialSkeleton />}>
-          <BlogsList locale={locale} users={users} />
+          <BlogsList locale={locale} blogs={blogs} />
         </Suspense>
 
         <div className="flex justify-center mt-5 items-center" dir="ltr">
-          {users?.last_page > 1 && (
+          {blogs?.last_page > 1 && (
             <CustomPagination
-              totalPage={users?.last_page}
+              totalPage={blogs?.last_page}
               current_page={current_page}
               color="primary"
               variant="flat"

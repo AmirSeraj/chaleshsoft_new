@@ -22,7 +22,7 @@ interface AuthorProps {
     author: AuthorProps;
   }
 
-  interface Users {
+  interface Blogs {
     current_page: number;
     data: DataProps[];
     last_page: number;
@@ -30,11 +30,11 @@ interface AuthorProps {
 
 const BlogsList = async ({
   locale,
-  users
+  blogs
   // searchParams,
 }: {
   locale: string;
-  users: Users
+  blogs: Blogs
   // searchParams?: {
   //   query?: string | undefined;
   //   page?: number | undefined;
@@ -45,7 +45,7 @@ const BlogsList = async ({
   //   (searchParams?.page as number) || 1
   // );
 
-  console.log("ee", users?.last_page);
+  console.log("ee", blogs?.last_page);
 
   // const current_page = searchParams?.page || users?.current_page;
 
@@ -53,7 +53,7 @@ const BlogsList = async ({
 
   return (
     <div className="w-full flex flex-col gap-3">
-      {users?.data?.map((blog: any) => (
+      {blogs?.data?.map((blog: any) => (
         <CustomBlog
           authorName={blog?.author?.name}
           authorImg={
