@@ -7,6 +7,7 @@ import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
 import TranslationProvider from "@/components/providers/TranslationsProvider";
 import initTranslations from "../i18n";
+import { NextUIProvider } from "@nextui-org/system";
 
 export const metadata: Metadata = {
   title: "Chalesh Soft",
@@ -60,8 +61,10 @@ export default async function RootLayout({
           resources={resources}
           namespaces={i18nNamespaces}
         >
-          {children}
-          <Footer />
+          <NextUIProvider>
+            {children}
+            <Footer />
+          </NextUIProvider>
         </TranslationProvider>
       </body>
     </html>

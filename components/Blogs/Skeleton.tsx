@@ -18,32 +18,32 @@ const Skeleton = ({
 }) => {
   const { ref, inView } = useInView();
   const [data, setData] = useState<any>([]);
-  const [page, setPage] = useState(1);
-  const current_pageRef = useRef(0);
+  const [pagesLoaded, setPagesLoaded] = useState(1);
+
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
   const loadMoreArticles = async () => {
-    const next = page + 1;
-    const articles = await fetchAllArticles(next);
-    // current_pageRef.current = articles?.current_page;
-    if (articles?.data?.length) {
-      setPage(next);
-      setData((prev: never[] | undefined) => [
-        ...(prev?.length ? prev : []),
-        ...articles?.data,
-      ]);
-    }
+    await delay(2000); // So that you dont hit rate limit
+    const nextPage = (pagesLoaded % 10) + 1;
+    const newArticles = (await fetchAllArticles(nextPage)) ?? [];
+    setData((prev: any | undefined) => [
+      ...(prev?.length ? prev : []),
+      ...newArticles?.data,
+    ]);
+    setPagesLoaded(nextPage);
   };
 
   useEffect(() => {
     if (inView) {
       loadMoreArticles();
+      console.log("scrolled to the end...");
     }
   }, [inView]);
 
   console.log("aaa", data);
 
   const main_url = process.env.NEXT_PUBLIC_APP_URL_SANCTUM;
-  console.log("defrfr", main_url);
 
   return (
     <>
@@ -68,10 +68,17 @@ const Skeleton = ({
           />
         ))}
       </section>
-      {/* {last_page > current_pageRef.current && ( */}
+
       <section ref={ref} className="flex justify-center items-center w-full">
         <Loading />
       </section>
+
+      {/* {last_page > current_pageRef.current && ( */}
+      {/* {page < last_page && (
+        <section ref={ref} className="flex justify-center items-center w-full">
+          <Loading />
+        </section>
+      )} */}
       {/* )} */}
     </>
   );

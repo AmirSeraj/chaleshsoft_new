@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const { nextui } = require("@nextui-org/theme");
 
 const config = {
   darkMode: ["class"],
@@ -8,6 +9,7 @@ const config = {
     "./app/**/*.{jsx,js,ts,tsx}",
     "./src/**/*.{jsx,js,ts,tsx}",
     "./@/**/*.{jsx,js,ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/components/pagination.js",
   ],
   prefix: "",
   theme: {
@@ -75,7 +77,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), nextui()],
 } satisfies Config;
 
 export default config;

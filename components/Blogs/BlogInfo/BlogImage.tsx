@@ -1,10 +1,17 @@
 import Image from "next/image";
 
-const BlogImage = ({ img }) => {
+interface BlogImageProps {
+  img: string;
+}
+
+const main_url = process.env.NEXT_PUBLIC_APP_URL_SANCTUM;
+
+const BlogImage = ({ img }: BlogImageProps) => {
+  
   return (
     <div className="w-full h-[500px] flex justify-center my-3 relative">
       <Image
-        src={img}
+        src={main_url + img}
         fill
         alt="article"
         priority

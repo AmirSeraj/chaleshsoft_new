@@ -1,12 +1,41 @@
 import WriteComment from "./WriteComment";
 import ShowComments from "./ShowComments";
 import { IoIosClose } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
-const ChatBlog = ({ comments, setOpenComments, openComments }) => {
-  
+interface repliesProps {
+  id: number;
+  body: string;
+  status: string;
+}
+
+interface commentsProps {
+  id?: number;
+  body?: string;
+  status?: string;
+  replies?: repliesProps[];
+}
+
+interface ChatBlogProps {
+  comments: commentsProps[];
+  setOpenComments: (openComments: boolean) => void;
+  openComments?: boolean;
+  articleId?: number
+}
+
+const ChatBlog = ({
+  comments,
+  setOpenComments,
+  openComments,
+  articleId
+}: ChatBlogProps) => {
+  console.log("commen", comments);
+
   const handleClose = () => {
     setOpenComments(false);
   };
+
+  const { t } = useTranslation();
 
   return (
     <div
@@ -16,8 +45,8 @@ const ChatBlog = ({ comments, setOpenComments, openComments }) => {
       } transition-all duration-700 fixed pb-10 overflow-auto top-0 right-0 flex m-auto sm:w-[500px] w-full bg-[white] rounded-lg drop-shadow-md flex-col items-center min-h-screen h-screen py-2`}
     >
       <div className="flex justify-between items-center w-full sm:px-8 px-1 mb-3">
-        <p className="text-lg text-black text-left font-bold w-full">
-          Responses ({comments?.length})
+        <p className="text-lg text-black font-bold w-full">
+          {t("answers")} ({comments?.length})
         </p>
         <IoIosClose
           onClick={handleClose}
