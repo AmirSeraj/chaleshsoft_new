@@ -5,14 +5,10 @@ const path =
   process.env.NEXT_PUBLIC_APP_URL_API + "/front/landing_articles?page=";
 
 export const fetchAllArticles = async (page: number) => {
-
-  console.log('ddd',path + page);
-  
-
   try {
     const res = await fetch(path + page, {
       next: {
-        revalidate: 10,
+        revalidate: 5,
       },
       method: "GET",
       headers: {
@@ -20,11 +16,9 @@ export const fetchAllArticles = async (page: number) => {
       },
     });
     const response = await res.json();
-    console.log('resss',response);
-    
     return response;
     // return { current_page, last_page, data } = response;
   } catch (error) {
-    console.log('err',error);
+    console.log("err", error);
   }
 };

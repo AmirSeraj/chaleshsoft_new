@@ -5,6 +5,7 @@ import SingleSlugSkeleton from "./SingleSlugSkeleton";
 import { fetchSingleArticle } from "@/lib/actions/blog/fetchSingleBlog";
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/providers/TranslationsProvider";
+import { getSession } from "@/lib/actions/getSession";
 
 const i18Namespaces = ["blog"];
 
@@ -16,6 +17,9 @@ const Page = async ({
   const { data } = await fetchSingleArticle(slug);
 
   const { t, resources } = await initTranslations(locale, i18Namespaces);
+  const session = await getSession();
+  const isLoggedIn = session.isLoggedIn;
+  const user = session.user;
 
   return (
     <>
@@ -29,7 +33,7 @@ const Page = async ({
           locale={locale}
           resources={resources}
         >
-          <BlogInfo article={data} locale={locale} />
+          <BlogInfo article={data} locale={locale} isLoggedIn={isLoggedIn} user={user} />
         </TranslationsProvider>
       </Suspense>
     </>

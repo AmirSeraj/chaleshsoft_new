@@ -6,8 +6,15 @@ import CategoriesRelatedToThisBlog from "./CategoriesRelatedToThisBlog";
 import { useTranslation } from "react-i18next";
 import BlogCard from "../BlogCard";
 import Slider from "./Slider";
-import ChatBlog from "./ChatBlog/ChatBloogContent";
+import ChatBlog from "./ChatBlog/ChatBlogContent";
 import { useState } from "react";
+
+interface UserInfo {
+  id?: number;
+  name?: string;
+  email?: string;
+  profile?: string;
+}
 
 interface blogInfoProps {
   article: {
@@ -29,12 +36,14 @@ interface blogInfoProps {
     comments: { id?: number; body?: string; status?: string }[];
   };
   locale: string;
+  isLoggedIn: boolean;
+  user: UserInfo[] | undefined;
 }
 
-const BlogInfo = ({ article, locale }: blogInfoProps) => {
+const BlogInfo = ({ article, locale, isLoggedIn, user }: blogInfoProps) => {
   const { t } = useTranslation();
   const [openComments, setOpenComments] = useState(false);
-  
+
   return (
     <>
       <div className="relative text-white flex flex-col gap-5 2xl:px-72 xl:px-52 lg:px-24 md:px-10 sm:px-5 px-4">
@@ -89,15 +98,19 @@ const BlogInfo = ({ article, locale }: blogInfoProps) => {
           <ChatBlog
             comments={article?.comments}
             articleId={article?.id}
+            article_slug={article?.slug}
             setOpenComments={setOpenComments}
             openComments={openComments}
+            isLoggedIn={isLoggedIn}
+            user={user}
+            locale={locale}
           />
         )}
 
         <h1 className="mb-4">{t("like_these")}</h1>
       </div>
 
-      {/* this task is for tomorrow i should send category id and get all articles related to this category, this is not categories, we only have one category which i have to send categoy id in order to  get articles related to this category  */}
+      {/* this task is for tomorrow i should send category id and get all articles related to this category, this is not categories, we only have one category which i have to send categoy id in order to  get articles related to this category  */} */}
       {/* {article?.categories?.length !== 0 && (
         <Slider data={article?.categories} />
       )} */}

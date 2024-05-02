@@ -16,21 +16,34 @@ interface commentsProps {
   replies?: repliesProps[];
 }
 
+interface UserInfo {
+  id?: number;
+  name?: string;
+  email?: string;
+  profile?: string;
+}
+
 interface ChatBlogProps {
   comments: commentsProps[];
   setOpenComments: (openComments: boolean) => void;
   openComments?: boolean;
-  articleId?: number
+  articleId?: number;
+  isLoggedIn: boolean;
+  user: UserInfo[] | undefined;
+  article_slug: string | undefined;
+  locale: string;
 }
 
 const ChatBlog = ({
   comments,
   setOpenComments,
   openComments,
-  articleId
+  articleId,
+  isLoggedIn,
+  user,
+  article_slug,
+  locale,
 }: ChatBlogProps) => {
-  console.log("commen", comments);
-
   const handleClose = () => {
     setOpenComments(false);
   };
@@ -56,14 +69,22 @@ const ChatBlog = ({
         />
       </div>
 
-      <WriteComment />
+      {isLoggedIn ? (
+        <WriteComment
+          articleId={articleId}
+          user={user}
+          article_slug={article_slug}
+        />
+      ) : (
+        <p className="text-red-500 font-bold">{t("leave_comment")}</p>
+      )}
 
       {/* show comments */}
 
       <div className="border-t border-gray-500 mt-3 w-full text-left text-black/70 text-[0.8rem] p-2">
         {comments?.length > 0 &&
           comments?.map((item, index) => (
-            <ShowComments key={index} comment={item} />
+            <ShowComments key={index} comment={item} locale={locale} />
           ))}
       </div>
     </div>
