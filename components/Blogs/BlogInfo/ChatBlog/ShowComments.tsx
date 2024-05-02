@@ -36,7 +36,12 @@ const ShowComments = ({ comment, locale }: commentProps) => {
     <div className="flex flex-col p-3 border-b border-slate-400 gap-2">
       <ShowName data={comment} locale={locale} />
 
-      <span className="mt-3 text-[0.75rem]">{comment?.body}</span>
+      <span
+        className="mt-3 text-[0.75rem]"
+        dir={locale === "fa" ? "rtl" : "ltr"}
+      >
+        {comment?.body}
+      </span>
 
       {/* reply to comment */}
       <div
