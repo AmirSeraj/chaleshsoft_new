@@ -54,8 +54,12 @@ const ShowComments = ({
     <div className="flex flex-col p-3 border-b border-slate-400 gap-2">
       <ShowName data={comment} locale={locale} />
 
-      {/* <div className="mt-3 text-[0.75rem] w-full">{comment?.body}</div> */}
-      <div style={{ unicodeBidi: "embed" }}>{comment?.body}</div>
+      <span
+        className="mt-3 text-[0.75rem]"
+        dir={locale === "fa" ? "rtl" : "ltr"}
+      >
+        {comment?.body}
+      </span>
 
       {/* reply to comment */}
       <div

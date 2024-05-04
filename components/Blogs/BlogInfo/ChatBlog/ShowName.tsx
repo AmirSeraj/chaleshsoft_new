@@ -32,7 +32,7 @@ const ShowName = ({ data, locale }: ShowNameProps) => {
       <div className="flex flex-col justify-between text-[0.7rem]">
         <span>{data?.user?.name}</span>
         <span className="text-[0.6rem]">
-          {moment(data.created_at).locale(locale).fromNow()}
+          {/* {moment(data.created_at).locale(locale).fromNow()} */}
         </span>
       </div>
     </div>
