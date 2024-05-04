@@ -9,7 +9,7 @@ const config = {
     "./app/**/*.{jsx,js,ts,tsx}",
     "./src/**/*.{jsx,js,ts,tsx}",
     "./@/**/*.{jsx,js,ts,tsx}",
-    "./node_modules/@nextui-org/theme/dist/components/pagination.js",
+    "./node_modules/@nextui-org/theme/dist/components/(button|pagination).js",
   ],
   prefix: "",
   theme: {
@@ -70,8 +70,18 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "infinite-scroll-fa": {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(100%)" },
+        },
+        "infinite-scroll-en": {
+          from: { transform: "translateX(0%)" },
+          to: { transform: "translateX(-100%)" },
+        },
       },
       animation: {
+        "infinite-scroll-fa": "infinite-scroll-fa 25s linear infinite",
+        "infinite-scroll-en": "infinite-scroll-en 25s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },

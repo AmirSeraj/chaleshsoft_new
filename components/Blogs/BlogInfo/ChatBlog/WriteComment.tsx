@@ -6,6 +6,7 @@ import CustomBtn from "./CustomBtn";
 import { useTranslation } from "react-i18next";
 import { SendComment } from "@/lib/actions/blog/sendComment";
 import { fetchSingleArticle } from "@/lib/actions/blog/fetchSingleBlog";
+import clsx from "clsx";
 
 interface UserInfo {
   id?: number;
@@ -51,13 +52,14 @@ const WriteComment: React.FC<WriteCommentProps> = ({
         ...prevCommentInfo,
         comment: "", // Clear the comment text box
       }));
-      await fetchSingleArticle(article_slug ?? '');
+      await fetchSingleArticle(article_slug ?? "");
     } catch (error) {
       console.log("error:", error);
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div
       className={`w-[90%] border border-gray-300 rounded-md p-3 drop-shadow-lg h-[220px]`}
@@ -93,6 +95,8 @@ const WriteComment: React.FC<WriteCommentProps> = ({
 
         <div className="flex gap-2 text-black text-[0.7rem] justify-end my-2">
           <button
+            disabled={commentInfo.comment === ""}
+            className={`${commentInfo.comment === "" && "cursor-not-allowed"}`}
             onClick={() =>
               setCommentInfo((prevCommentInfo) => ({
                 ...prevCommentInfo,
@@ -100,9 +104,13 @@ const WriteComment: React.FC<WriteCommentProps> = ({
               }))
             }
           >
-            Cancel
+            {t("cancel")}
           </button>
-          <CustomBtn loading={loading} />
+          <CustomBtn
+            loading={loading}
+            className={`${commentInfo.comment === "" && "cursor-not-allowed"}`}
+            disabled={commentInfo.comment === ""}
+          />
         </div>
       </form>
     </div>

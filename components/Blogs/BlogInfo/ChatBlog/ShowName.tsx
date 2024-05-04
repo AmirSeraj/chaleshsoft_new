@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { IoPersonCircleOutline } from "react-icons/io5";
-import moment from "moment";
+import moment, { LocaleSpecifier } from "moment";
 import "moment/locale/fa";
 
 interface ShowNameProps {
@@ -12,7 +12,7 @@ interface ShowNameProps {
     user: { email: string; name: string; profile: string | "" };
     created_at: string;
   };
-  locale: string;
+  locale: LocaleSpecifier | undefined;
 }
 
 const ShowName = ({ data, locale }: ShowNameProps) => {

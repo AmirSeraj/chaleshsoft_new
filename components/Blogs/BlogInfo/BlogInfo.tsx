@@ -61,28 +61,24 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: blogInfoProps) => {
           locale={locale}
         />
 
-        {(article?.liked_count !== 0 || article?.comments_count !== 0) && (
-          <BlogLikes
-            setOpenComments={setOpenComments}
-            likeNum={article?.liked_count}
-            commentNum={article?.comments_count}
-            openComments={openComments}
-          />
-        )}
+        <BlogLikes
+          setOpenComments={setOpenComments}
+          likeNum={article?.liked_count}
+          commentNum={article?.comments_count}
+          openComments={openComments}
+        />
 
         <BlogImage img={article?.article_image ?? ""} />
 
         {/* matn */}
         <p className="leading-[2rem] text-sm">{article?.content}</p>
 
-        {(article?.liked_count !== 0 || article?.comments_count !== 0) && (
-          <BlogLikes
-            setOpenComments={setOpenComments}
-            likeNum={article?.liked_count}
-            commentNum={article?.comments_count}
-            openComments={openComments}
-          />
-        )}
+        <BlogLikes
+          setOpenComments={setOpenComments}
+          likeNum={article?.liked_count}
+          commentNum={article?.comments_count}
+          openComments={openComments}
+        />
 
         <div className="flex flex-wrap gap-2 w-full">
           {article?.tags.map((item, index) => (
@@ -94,18 +90,16 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: blogInfoProps) => {
         </div>
 
         {/* chats comes here */}
-        {article?.comments?.length !== 0 && (
-          <ChatBlog
-            comments={article?.comments}
-            articleId={article?.id}
-            article_slug={article?.slug}
-            setOpenComments={setOpenComments}
-            openComments={openComments}
-            isLoggedIn={isLoggedIn}
-            user={user}
-            locale={locale}
-          />
-        )}
+        <ChatBlog
+          comments={article?.comments}
+          articleId={article?.id}
+          article_slug={article?.slug}
+          setOpenComments={setOpenComments}
+          openComments={openComments}
+          isLoggedIn={isLoggedIn}
+          user={user}
+          locale={locale}
+        />
 
         <h1 className="mb-4">{t("like_these")}</h1>
       </div>

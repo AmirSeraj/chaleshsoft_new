@@ -84,7 +84,13 @@ const ChatBlog = ({
       <div className="border-t border-gray-500 mt-3 w-full text-left text-black/70 text-[0.8rem] p-2">
         {comments?.length > 0 &&
           comments?.map((item, index) => (
-            <ShowComments key={index} comment={item} locale={locale} />
+            <ShowComments
+              key={index}
+              comment={item}
+              locale={locale}
+              articleId={articleId}
+              article_slug={article_slug}
+            />
           ))}
       </div>
     </div>

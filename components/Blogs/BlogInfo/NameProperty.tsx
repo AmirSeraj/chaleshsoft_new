@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { IoMdPerson } from "react-icons/io";
-import moment from "moment";
+import moment, { LocaleSpecifier } from "moment";
+import "moment/locale/fa";
 import { useTranslation } from "react-i18next";
 
 interface NamePropertyProps {
@@ -9,7 +10,7 @@ interface NamePropertyProps {
   name?: string;
   min_read?: number;
   created_at?: string;
-  locale?: string;
+  locale?: LocaleSpecifier | undefined;
 }
 
 const main_url = process.env.NEXT_PUBLIC_APP_URL_SANCTUM;
@@ -40,7 +41,7 @@ const NameProperty = ({
         <div className="flex gap-2 items-end text-[#ccc] text-[0.7rem]">
           <span>{min_read} {t("min_read")}</span>
           <span className="text-lg">.</span>
-          <span>{moment(created_at).fromNow()}</span>
+          <span>{moment(created_at).locale(locale).fromNow()}</span>
         </div>
       </div>
     </div>

@@ -6,8 +6,11 @@ import { getSession } from "../getSession";
 /**PATH */
 const path = process.env.NEXT_PUBLIC_APP_URL_API + "/manager/comments";
 
-export const SendComment = async (commentInfo: [string, any][]) => {
+interface commentInfoProps {}
+
+export const SendComment = async (commentInfo: commentInfoProps) => {
   const session = await getSession();
+  console.log("comments:", commentInfo);
   try {
     const res = await fetch(path, {
       next: {

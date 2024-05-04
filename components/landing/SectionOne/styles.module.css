@@ -1,0 +1,15 @@
+.container {
+  background-image: url("/images/landing/ImgBackgroundSectionOne.svg");
+  background-size: contain;
+  z-index: 10000;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  min-height: 679px;
+  padding-left: 8.5%;
+  padding-right: 8.5%;
+}
