@@ -11,8 +11,18 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 import Link from "next/link";
 import Image from "next/image";
+import clsx from "clsx";
 
-const Slider = ({ data }) => {
+interface dataProps {
+  data: {
+    href: string;
+    text: string;
+    img: string;
+  }[];
+  locale: string;
+}
+
+const Slider = ({ data, locale }: dataProps) => {
   return (
     <Swiper
       slidesPerView={1}
@@ -73,21 +83,27 @@ const Slider = ({ data }) => {
                   >
                     {wordIndex === 0 && (
                       <Image
-                        src="/images/Main/sentenceStart.png"
+                        src="/images/landing/sentenceStart.png"
                         width={31}
                         height={31}
                         alt="start"
-                        className="!w-[31px] !h-[31px] lg:!scale-100 md:!scale-75 !scale-50"
+                        className={clsx(
+                          "!w-[31px] !h-[31px] lg:!scale-100 md:!scale-75 !scale-50",
+                          locale === "fa" ? "rotate-180" : "rotate-0"
+                        )}
                       />
                     )}
                     {word}&nbsp;
                     {wordIndex === array.length - 1 && (
                       <Image
-                        src="/images/Main/sentenceEnd.png"
+                        src="/images/landing/sentenceEnd.png"
                         width={31}
                         height={31}
                         alt="end"
-                        className="lg:!scale-100 md:!scale-75 !scale-50"
+                        className={clsx(
+                          "lg:!scale-100 md:!scale-75 !scale-50",
+                          locale === "fa" ? "rotate-180" : "rotate-0"
+                        )}
                       />
                     )}
                   </span>

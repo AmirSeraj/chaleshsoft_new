@@ -3,24 +3,9 @@ import Link from "next/link";
 import React from "react";
 import TruncatedSummary from "./TruncatedSummary";
 import initTranslations from "@/app/i18n";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { CustomBlogProps } from "@/lib/types";
 
 const i18NameSpaces = ["blog"];
-
-interface CustomBlogProps {
-  articleImg?: string;
-  articleTitle?: string;
-  articleSummary: string;
-  article_created_at: string;
-  min_read: number;
-  alt: string;
-  authorImg?: string | StaticImport;
-  authorName: string;
-  key:number,
-  href: string;
-  locale: string;
-  author?: any;
-}
 
 const CustomBlog: React.FC<CustomBlogProps> = async ({
   articleImg,

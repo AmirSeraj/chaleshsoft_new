@@ -8,39 +8,11 @@ import BlogCard from "../BlogCard";
 import Slider from "./Slider";
 import ChatBlog from "./ChatBlog/ChatBlogContent";
 import { useState } from "react";
+import { BlogInfoProps } from "@/lib/types";
 
-interface UserInfo {
-  id?: number;
-  name?: string;
-  email?: string;
-  profile?: string;
-}
 
-interface blogInfoProps {
-  article: {
-    id?: number;
-    title?: string;
-    slug?: string;
-    content?: string;
-    min_read?: number;
-    short_link?: string;
-    deleted_at?: string;
-    created_at?: string;
-    comments_count?: number;
-    liked_count?: number;
-    bookmarks_count?: number;
-    article_image?: string;
-    author: { id?: number; name?: string; profile?: string; email?: string };
-    tags: { id?: number; title?: string }[];
-    categories: { id?: number; title?: string }[];
-    comments: { id?: number; body?: string; status?: string }[];
-  };
-  locale: string;
-  isLoggedIn: boolean;
-  user: UserInfo[] | undefined;
-}
 
-const BlogInfo = ({ article, locale, isLoggedIn, user }: blogInfoProps) => {
+const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
   const { t } = useTranslation();
   const [openComments, setOpenComments] = useState(false);
 
@@ -68,7 +40,7 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: blogInfoProps) => {
           openComments={openComments}
         />
 
-        <BlogImage img={article?.article_image ?? ""} />
+        <BlogImage img={article?.photo ?? ""} />
 
         {/* matn */}
         <p className="leading-[2rem] text-sm">{article?.content}</p>

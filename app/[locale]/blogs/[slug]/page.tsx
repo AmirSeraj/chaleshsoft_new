@@ -13,13 +13,13 @@ type Props = {
 };
 
 export async function generateMetadata(
-  { params: { slug, locale } }: Props,
+  { params: { slug } }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { data } = await fetchSingleArticle(slug);
-  return{
-    title: data.title
-  }
+  return {
+    title: data.title,
+  };
 }
 
 const i18Namespaces = ["blog"];
@@ -33,10 +33,6 @@ export default async function Page({ params: { slug, locale } }: Props) {
 
   return (
     <>
-      <Head>
-        <title>َArticle info</title>
-        <meta property="og:image" content="content of blog" />
-      </Head>
       <Suspense fallback={<SingleSlugSkeleton />}>
         <TranslationsProvider
           namespaces={i18Namespaces}

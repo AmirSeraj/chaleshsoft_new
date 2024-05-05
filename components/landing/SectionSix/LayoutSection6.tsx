@@ -2,12 +2,18 @@ import React from "react";
 import SliderOne from "./SliderOne";
 import SliderTwo from "./SliderTwo";
 import AnimatedText from "@/components/AnimatedText";
+import { LandingSection6Props } from "@/lib/types";
 
-const LayoutSection6 = () => {
+interface LayoutSection6Props {
+  articles: LandingSection6Props[];
+  news: LandingSection6Props[];
+}
+
+const LayoutSection6 = ({ articles, news }: LayoutSection6Props) => {
   return (
     <div
       style={{
-        backgroundImage: "url('/images/Main/section6.png')",
+        backgroundImage: "url('/images/landing/section6.png')",
         backgroundSize: "",
         zIndex: "100000",
         position: "relative",
@@ -26,11 +32,11 @@ const LayoutSection6 = () => {
           className="text-white sm:text-4xl text-xl font-bold leading-[2rem] sm:leading-[3rem]"
         />
       </div>
-      <SliderOne />
+      <SliderOne articles={articles} />
       <p className="text-white sm:text-5xl text-3xl font-bold mb-12">
         Latest News
       </p>
-      <SliderTwo />
+      <SliderTwo news={news} />
     </div>
   );
 };

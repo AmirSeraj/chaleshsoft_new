@@ -1,10 +1,33 @@
 import AnimatedText from "@/components/AnimatedText";
-import Link from "next/link";
-import Image from "next/image";
-import InfiniteHorizontalScroll from "./InfinitHorizontalScroll";
+import SliderTwo from "./SliderTwo";
 
 const LayoutSection2 = ({ locale }: { locale: string }) => {
   const data = [
+    {
+      img: "/images/landing/ether.png",
+      name: "Ethereum",
+      href: "https://ethereum.org",
+    },
+    {
+      img: "/images/landing/polygan.png",
+      name: "Polygan",
+      href: "https://polygan.org",
+    },
+    {
+      img: "/images/landing/python.png",
+      name: "Python",
+      href: "https://amir",
+    },
+    {
+      img: "/images/landing/solana.png",
+      name: "Solana",
+      href: "https://amir",
+    },
+    {
+      img: "/images/landing/solidity.png",
+      name: "Solidity",
+      href: "https://amir",
+    },
     {
       img: "/images/landing/ether.png",
       name: "Ethereum",
@@ -37,7 +60,7 @@ const LayoutSection2 = ({ locale }: { locale: string }) => {
         text="Leveraging Cutting-Edge Technologies"
         className="text-white text-center"
       />
-      <InfiniteHorizontalScroll locale={locale}>
+      {/* <InfiniteHorizontalScroll locale={locale}>
         {data.map((item, index) => (
           <li key={index}>
             <Link
@@ -49,7 +72,8 @@ const LayoutSection2 = ({ locale }: { locale: string }) => {
             </Link>
           </li>
         ))}
-      </InfiniteHorizontalScroll>
+      </InfiniteHorizontalScroll> */}
+      <SliderTwo data={data} />
     </div>
   );
 };

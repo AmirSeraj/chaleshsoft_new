@@ -1,7 +1,7 @@
 // "use client";
 import Slider from "./Slider";
 
-const LayoutSection7 = () => {
+const LayoutSection7 = ({ locale }: { locale: string }) => {
   // const [isClient, setIsClient] = useState(false);
   // useEffect(() => {
   //   setIsClient(true);
@@ -11,47 +11,47 @@ const LayoutSection7 = () => {
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.11 Reliable data and lightning-fast response times! highly recommended. -Sarah L.",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.22 Reliable data and lightning-fast response times! highly recommended. -Sarah L.",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.33 Reliable data and lightning-fast response times! highly recommended. -Sarah L.",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.44 ",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.55 ",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.66 Reliable data and lightning-fast response times! highly recommended. -Sarah L. Reliable data and lightning-fast response times! highly recommended. -Sarah L.",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.77 Reliable data and lightning-fast response times! highly recommended. -Sarah L.",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L.88 Reliable data and lightning-fast response times! highly recommended. -Sarah L.",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
     {
       href: "saaa",
       text: "Reliable data and lightning-fast response times! highly recommended. -Sarah L. Reliable data and lightning-fast response times! highly recommended. -Sarah L.",
-      img: "/images/Main/Group.png",
+      img: "/images/landing/Group.png",
     },
   ];
 
@@ -64,7 +64,7 @@ const LayoutSection7 = () => {
         Empowering Success Through ChaleshSoft{" "}
       </p>
       {/* {isClient && <Slider data={data} />} */}
-      <Slider data={data} />
+      <Slider data={data} locale={locale} />
     </div>
   );
 };
