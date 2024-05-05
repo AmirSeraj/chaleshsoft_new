@@ -10,7 +10,7 @@ const LayoutSection9 = () => {
       <p className="text-[#C084FC] text-center">
         Enter your email to receive the latest MEV insights and updates.
       </p>
-      <idv className="flex sm:flex-row flex-col gap-5">
+      <div className="flex sm:flex-row flex-col gap-5">
         <input
           className="rounded-2xl px-5 sm:py-0 py-[0.75rem] bg-[#ccc] text-[#09090B]"
           placeholder="Enter your email address"
@@ -18,7 +18,7 @@ const LayoutSection9 = () => {
         <ButtonCustom className="text-[white] bg-blue-700 !rounded-2xl">
           Subscribe
         </ButtonCustom>
-      </idv>
+      </div>
     </div>
   );
 };

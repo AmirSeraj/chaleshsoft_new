@@ -2,12 +2,18 @@ import React from "react";
 import SliderOne from "./SliderOne";
 import SliderTwo from "./SliderTwo";
 import AnimatedText from "@/components/AnimatedText";
+import { LandingArticlesProps } from "@/lib/types/LandingArticles";
 
-const LayoutSection6 = () => {
+interface LayoutSection6Props{
+  articles: LandingArticlesProps[];
+  news: 
+}
+
+const LayoutSection6 = ({ articles, news }) => {
   return (
     <div
       style={{
-        backgroundImage: "url('/images/Main/section6.png')",
+        backgroundImage: "url('/images/landing/section6.png')",
         backgroundSize: "",
         zIndex: "100000",
         position: "relative",

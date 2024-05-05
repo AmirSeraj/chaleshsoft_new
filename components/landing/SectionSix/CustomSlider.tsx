@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,7 +15,21 @@ import { Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
-const CustomSlider = ({
+interface CustomSliderProps {
+  data: {
+    title: string;
+    text: string;
+    href: string;
+    img: string;
+  }[];
+  ImageWidth: number;
+  ImageHeight: number;
+  className: string;
+  sliderClass: string;
+  add: boolean | false;
+}
+
+const CustomSlider: React.FC<CustomSliderProps> = ({
   className = "",
   data,
   ImageWidth,

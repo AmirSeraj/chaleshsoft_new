@@ -6,7 +6,7 @@ const LayoutSection8 = () => {
   return (
     <div
       style={{
-        backgroundImage: "url('/images/Main/section8.png')",
+        backgroundImage: "url('/images/landing/section8.png')",
         backgroundSize: "",
         zIndex: "100000",
         position: "relative",
