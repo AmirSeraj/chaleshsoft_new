@@ -1,77 +1,19 @@
+
+import { LandingSection6Props } from "@/lib/types";
 import CustomSlider from "./CustomSlider";
 
-const data = [
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-3.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-2.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-3.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-3.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-3.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-2.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-2.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-2.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-3.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-2.png",
-  },
-  {
-    title: "Speed and Responsiveness",
-    text: "“Lightning-Fast Response Times: Our platform ensures swift data access in transaction efficiency.”",
-    href: "/dd",
-    img: "/images/landing/section6-3.png",
-  },
-];
+interface NewsProps {
+  news: LandingSection6Props[];
+}
 
-const SliderTwo = () => {
+const SliderTwo = ({ news }: NewsProps) => {
   return (
-    <CustomSlider data={data} className="max-w-[402px] !h-[524px]" ImageWidth={402} ImageHeight={247} add={true} sliderClass="min-h-[580px]" />
+    <CustomSlider
+      data={news}
+      className="max-w-[402px] !h-[524px]"
+      add={true}
+      sliderClass="min-h-[580px]"
+    />
   );
 };
 

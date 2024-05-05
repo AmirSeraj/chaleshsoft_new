@@ -2,14 +2,14 @@ import React from "react";
 import SliderOne from "./SliderOne";
 import SliderTwo from "./SliderTwo";
 import AnimatedText from "@/components/AnimatedText";
-import { LandingArticlesProps } from "@/lib/types/LandingArticles";
+import { LandingSection6Props } from "@/lib/types";
 
-interface LayoutSection6Props{
-  articles: LandingArticlesProps[];
-  news: 
+interface LayoutSection6Props {
+  articles: LandingSection6Props[];
+  news: LandingSection6Props[];
 }
 
-const LayoutSection6 = ({ articles, news }) => {
+const LayoutSection6 = ({ articles, news }: LayoutSection6Props) => {
   return (
     <div
       style={{
@@ -32,11 +32,11 @@ const LayoutSection6 = ({ articles, news }) => {
           className="text-white sm:text-4xl text-xl font-bold leading-[2rem] sm:leading-[3rem]"
         />
       </div>
-      <SliderOne />
+      <SliderOne articles={articles} />
       <p className="text-white sm:text-5xl text-3xl font-bold mb-12">
         Latest News
       </p>
-      <SliderTwo />
+      <SliderTwo news={news} />
     </div>
   );
 };

@@ -23,6 +23,8 @@ const Blog = async ({
 
   const blogs = await fetchAllArticles((searchParams?.page as number) || 1);
 
+  console.log("blogs", blogs);
+
   const current_page = searchParams?.page || blogs?.current_page;
 
   return (

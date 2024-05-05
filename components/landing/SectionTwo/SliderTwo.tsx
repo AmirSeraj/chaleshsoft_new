@@ -9,11 +9,16 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation } from "swiper/modules";
+
 import Link from "next/link";
 import Image from "next/image";
+import { SectionTwoProps } from "@/lib/types";
 
-const SliderTwo = ({ data }) => {
+interface SliderProps {
+  data: SectionTwoProps[];
+}
+
+const SliderTwo = ({ data }: SliderProps) => {
   return (
     <Swiper
       slidesPerView={6}

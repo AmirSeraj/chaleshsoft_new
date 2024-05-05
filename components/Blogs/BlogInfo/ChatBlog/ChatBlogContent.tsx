@@ -2,37 +2,7 @@ import WriteComment from "./WriteComment";
 import ShowComments from "./ShowComments";
 import { IoIosClose } from "react-icons/io";
 import { useTranslation } from "react-i18next";
-
-interface repliesProps {
-  id: number;
-  body: string;
-  status: string;
-}
-
-interface commentsProps {
-  id?: number;
-  body?: string;
-  status?: string;
-  replies?: repliesProps[];
-}
-
-interface UserInfo {
-  id?: number;
-  name?: string;
-  email?: string;
-  profile?: string;
-}
-
-interface ChatBlogProps {
-  comments: commentsProps[];
-  setOpenComments: (openComments: boolean) => void;
-  openComments?: boolean;
-  articleId?: number;
-  isLoggedIn: boolean;
-  user: UserInfo[] | undefined;
-  article_slug: string | undefined;
-  locale: string;
-}
+import { ChatBlogProps } from "@/lib/types";
 
 const ChatBlog = ({
   comments,

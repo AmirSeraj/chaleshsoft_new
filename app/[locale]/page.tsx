@@ -31,11 +31,11 @@ export default async function Home({
       <main>
         <SectionOneMain />
         <LayoutSection2 locale={locale} />
-        <LayoutSection3 />
+        <LayoutSection3 locale={locale} />
         <LayoutSection4 />
         {/* features */}
         <LayoutSection5 features={landing.features} />
-        <LayoutSection6 articles={articles} news={news} />
+        <LayoutSection6 articles={landing.articles} news={landing.news} />
         <LayoutSection7 locale={locale} />
         <LayoutSection8 />
         <LayoutSection9 />
