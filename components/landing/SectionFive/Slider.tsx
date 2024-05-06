@@ -8,7 +8,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Card from "./Card";
-import { FeatureProps } from "@/lib/types/LandingFeatures";
+import { FeatureProps } from "@/lib/types";
+
 
 interface featuresProps {
   features: FeatureProps[];
@@ -33,7 +34,6 @@ const Slider: React.FC<featuresProps> = ({ features }) => {
         loop={true}
         autoplay={{
           delay: 5000,
-          speed: 2000,
           disableOnInteraction: false,
         }}
         speed={1200}

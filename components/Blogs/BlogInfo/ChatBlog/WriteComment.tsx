@@ -6,35 +6,17 @@ import CustomBtn from "./CustomBtn";
 import { useTranslation } from "react-i18next";
 import { SendComment } from "@/lib/actions/blog/sendComment";
 import { fetchSingleArticle } from "@/lib/actions/blog/fetchSingleBlog";
-import clsx from "clsx";
+import { CommentInfoProps, WriteCommentProps } from "@/lib/types";
 
-interface UserInfo {
-  id?: number;
-  name?: string;
-  email?: string;
-  profile?: string;
-}
 
-interface WriteCommentProps {
-  articleId?: number;
-  user?: UserInfo;
-  article_slug?: string;
-}
-
-interface CommentInfo {
-  article: number | undefined;
-  user: UserInfo | undefined;
-  comment: string | undefined;
-}
 
 const WriteComment: React.FC<WriteCommentProps> = ({
   articleId,
   user,
   article_slug,
 }) => {
-  // console.log("ererrttfgr", user);
 
-  const [commentInfo, setCommentInfo] = useState<CommentInfo>({
+  const [commentInfo, setCommentInfo] = useState<CommentInfoProps>({
     article: articleId,
     user: user,
     comment: "",

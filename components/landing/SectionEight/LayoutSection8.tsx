@@ -1,5 +1,5 @@
 import AnimatedText from "@/components/AnimatedText";
-import ButtonCustom from "@/components/buttonCustom";
+import ButtonCustom from "@/components/ButtonCustom";
 import React from "react";
 
 const LayoutSection8 = () => {

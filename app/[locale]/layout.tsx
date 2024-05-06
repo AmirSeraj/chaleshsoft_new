@@ -13,7 +13,10 @@ export const metadata: Metadata = {
   title: "Chalesh Soft",
   description: "Chalesh Soft",
   icons: {
-    icon: "/favicon.ico",
+    icon:{
+      url: '/favicon.ico'
+    }
+    // icon: "/favicon.ico",
   },
 };
 

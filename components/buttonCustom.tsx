@@ -1,14 +1,6 @@
 "use client";
+import { ButtonCustomProps } from "@/lib/types";
 
-import React from "react";
-
-interface ButtonCustomProps {
-  className: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-}
 const ButtonCustom = ({
   className,
   onClick,

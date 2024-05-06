@@ -1,4 +1,11 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
+export interface ButtonCustomProps {
+  className: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
 
 export interface FeatureProps {
   id?: number;
@@ -16,6 +23,17 @@ export interface LandingSection6Props {
   summary?: string;
   min_read?: number;
   short_link?: string;
+  locale: string;
+}
+
+export interface CustomSliderProps {
+  data: LandingSection6Props[];
+  ImageWidth?: number;
+  ImageHeight?: number;
+  className?: string;
+  sliderClass?: string;
+  add?: boolean | false;
+  locale?: string;
 }
 
 export interface SubjectProps {
@@ -58,17 +76,16 @@ export interface BlogsProps {
 }
 
 export interface CustomBlogProps {
-  articleImg?: string;
+  articleImg: string;
   articleTitle?: string;
   articleSummary: string;
   article_created_at: string;
   min_read: number;
   alt: string;
-  authorImg?: string | StaticImport;
+  authorImg: string | StaticImport;
   authorName: string;
   key: number;
   href: string;
-  locale: string;
   author?: any;
 }
 
@@ -88,28 +105,30 @@ export interface CommentsProps {
   status?: string;
 }
 
+export interface ArticleProps {
+  id?: number;
+  title?: string;
+  slug?: string;
+  content?: string;
+  min_read?: number;
+  short_link?: string;
+  deleted_at?: string;
+  created_at?: string;
+  comments_count?: number;
+  liked_count?: number;
+  bookmarks_count?: number;
+  photo?: string;
+  author?: UserProps;
+  tags?: TagsProps[] | undefined;
+  categories?: CategoriesProps[];
+  comments?: CommentsProps[] | undefined;
+}
+
 export interface BlogInfoProps {
-  article: {
-    id?: number;
-    title?: string;
-    slug?: string;
-    content?: string;
-    min_read?: number;
-    short_link?: string;
-    deleted_at?: string;
-    created_at?: string;
-    comments_count?: number;
-    liked_count?: number;
-    bookmarks_count?: number;
-    photo?: string;
-    author: UserProps;
-    tags: TagsProps[];
-    categories: CategoriesProps[];
-    comments: CommentsProps[];
-  };
-  locale?: string;
+  article: ArticleProps;
+  locale: string;
   isLoggedIn?: boolean;
-  user?: UserProps;
+  user?: UserProps | undefined;
 }
 
 interface RepliesProps {
@@ -134,4 +153,42 @@ export interface ChatBlogProps {
   user?: UserProps;
   article_slug?: string | undefined;
   locale?: string;
+}
+
+export interface CardWrapperProps {
+  children: React.ReactNode;
+  headerLabel: string;
+  headerTitle: string;
+  backButtonLabel: string;
+  backButtonHref: string;
+  showSocial?: boolean;
+}
+
+export interface BackButtonProps {
+  label?: string;
+  href?: URL | string | undefined;
+  className?: string;
+}
+
+export interface CardProps {
+  href?: string;
+  title?: string;
+  text?: string;
+}
+
+export interface WriteCommentProps {
+  articleId?: number;
+  user?: UserProps;
+  article_slug?: string;
+}
+
+export interface CommentInfoProps {
+  article: number | undefined;
+  user: UserProps | undefined;
+  comment: string | undefined;
+}
+
+export interface FetchLikeProps {
+  id?: number;
+  type?: string;
 }

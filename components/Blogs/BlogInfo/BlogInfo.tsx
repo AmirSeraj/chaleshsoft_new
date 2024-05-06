@@ -35,6 +35,7 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
 
         <BlogLikes
           setOpenComments={setOpenComments}
+          article={article}
           likeNum={article?.liked_count}
           commentNum={article?.comments_count}
           openComments={openComments}
@@ -50,10 +51,11 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
           likeNum={article?.liked_count}
           commentNum={article?.comments_count}
           openComments={openComments}
+          article={article}
         />
 
         <div className="flex flex-wrap gap-2 w-full">
-          {article?.tags.map((item, index) => (
+          {article?.tags && article?.tags.map((item, index) => (
             <CategoriesRelatedToThisBlog
               key={index}
               categoryName={item?.title ?? ""}
@@ -63,7 +65,7 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
 
         {/* chats comes here */}
         <ChatBlog
-          comments={article?.comments}
+          comments={article?.comments ?? []}
           articleId={article?.id}
           article_slug={article?.slug}
           setOpenComments={setOpenComments}
@@ -75,11 +77,6 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
 
         <h1 className="mb-4">{t("like_these")}</h1>
       </div>
-
-      {/* this task is for tomorrow i should send category id and get all articles related to this category, this is not categories, we only have one category which i have to send categoy id in order to  get articles related to this category  */} */}
-      {/* {article?.categories?.length !== 0 && (
-        <Slider data={article?.categories} />
-      )} */}
     </>
   );
 };

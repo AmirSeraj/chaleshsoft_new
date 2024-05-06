@@ -1,4 +1,4 @@
-import ButtonCustom from "@/components/buttonCustom";
+import ButtonCustom from "@/components/ButtonCustom";
 import React from "react";
 
 const LayoutSection9 = () => {

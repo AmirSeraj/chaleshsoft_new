@@ -1,19 +1,14 @@
-import { getSession } from "@/lib/actions/getSession";
 import Link from "next/link";
 import LogoutForm from "../auth/LogoutForm";
+import { getSession } from "@/lib/actions/getSession";
+import { IronSession } from "iron-session";
+import { SessionData } from "@/lib/authConfig";
 
 const Tabs = async ({ t }: any) => {
-  const session = await getSession();
+  const session: IronSession<SessionData> = await getSession();
   return (
     <div className="gap-7 items-center text-white text-[15px] md:flex hidden">
-      {session?.isLoggedIn ? (
-        <>
-          <Link href={"/dashboard"}>{session?.user?.name}</Link>
-          <LogoutForm title={t("logout")} />
-        </>
-      ) : (
-        <Link href={"/login"}>{t("login")}</Link>
-      )}
+      {session.isLoggedIn && <LogoutForm title={t("logout")} />}
       <Link href="/products">{t("products")}</Link>
       <Link href="/blogs">{t("blog")}</Link>
       <Link href="/docs">{t("docs")}</Link>

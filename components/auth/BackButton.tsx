@@ -1,12 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-
-interface BackButtonProps {
-  label: string;
-  href: string;
-  className: string;
-}
+import { BackButtonProps } from "@/lib/types";
 
 const BackButton = ({ label, href, className }: BackButtonProps) => {
   return (
@@ -16,7 +11,7 @@ const BackButton = ({ label, href, className }: BackButtonProps) => {
       size={"sm"}
       asChild
     >
-      <Link href={href} className={className}>
+      <Link href={href ?? ''} className={className}>
         {label}
       </Link>
     </Button>

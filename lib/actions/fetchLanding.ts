@@ -15,7 +15,6 @@ export const fetchLanding = async () => {
       },
     });
     const response = await res.json();
-    console.log('resssw',response);
     
     return response;
     // return { current_page, last_page, data } = response;

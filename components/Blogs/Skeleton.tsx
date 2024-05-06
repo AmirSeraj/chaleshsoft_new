@@ -41,8 +41,6 @@ const Skeleton = ({
     }
   }, [inView]);
 
-  console.log("aaa", data);
-
   const main_url = process.env.NEXT_PUBLIC_APP_URL_SANCTUM;
 
   return (

@@ -1,7 +1,7 @@
-import ButtonCustom from "@/components/buttonCustom";
+import ButtonCustom from "@/components/ButtonCustom";
 import React from "react";
 import Slider from "./Slider";
-import { FeatureProps } from "@/lib/types/LandingFeatures";
+import { FeatureProps } from "@/lib/types";
 
 interface featuresProps {
   features: FeatureProps[];

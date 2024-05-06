@@ -10,7 +10,7 @@ interface NamePropertyProps {
   name?: string;
   min_read?: number;
   created_at?: string;
-  locale?: LocaleSpecifier | undefined;
+  locale: LocaleSpecifier;
 }
 
 const main_url = process.env.NEXT_PUBLIC_APP_URL_SANCTUM;

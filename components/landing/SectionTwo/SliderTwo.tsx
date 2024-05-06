@@ -42,7 +42,7 @@ const SliderTwo = ({ data }: SliderProps) => {
       loop={true}
       autoplay={{
         delay: 5000,
-        speed: 2000,
+        // speed: 2000,
         // disableOnInteraction: true,
       }}
       modules={[Autoplay]}
@@ -60,10 +60,10 @@ const SliderTwo = ({ data }: SliderProps) => {
           className="!flex !justify-center items-center m-auto"
         >
           <Link
-            href={item.href}
+            href={item.href ?? ''}
             className="w-[150px] h-[100px] !flex !justify-center !items-center gap-5"
           >
-            <Image src={item.img} width={50} height={50} alt={item.name} />
+            <Image src={item.img ?? ''} width={50} height={50} alt={item.name ?? ''} />
             <span className="text-white text-lg">{item.name}</span>
           </Link>
         </SwiperSlide>

@@ -1,7 +1,13 @@
 import { SessionOptions } from "iron-session";
 
+interface UserProps {
+  name: string;
+  email: string;
+  profile?: null | string;
+}
+
 export interface SessionData {
-  user?: [];
+  user?: UserProps;
   token?: string;
   isLoggedIn: boolean;
 }

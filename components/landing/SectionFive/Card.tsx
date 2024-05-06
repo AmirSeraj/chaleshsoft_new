@@ -1,15 +1,10 @@
+import { CardProps } from "@/lib/types";
 import Link from "next/link";
 import { RxArrowRight } from "react-icons/rx";
 
-interface CardProps {
-  href: string;
-  title: string;
-  text: string;
-}
-
 const Card = ({ href, title, text }: CardProps) => {
   return (
-    <Link href={href}>
+    <Link href={href ?? ''}>
       <p className="text-[#818CF8] mb-7 text-lg group-hover:opacity-10 font-bold">
         {title}
       </p>

@@ -8,10 +8,10 @@ const ImgComponent = () => {
   return (
     <MotionLink href="/" whileHover={{ scale: 1.5 }}>
       <Image
-        src="/images/Header/ImgHeader.svg"
+        src="/images/Header/ImgHeader.png"
         width={40}
         height={40}
-        alt="header svg"
+        alt="header"
       />
     </MotionLink>
   );

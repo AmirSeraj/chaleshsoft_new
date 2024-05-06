@@ -30,7 +30,10 @@ const ShowCommentReplies: React.FC<ShowCommentRepliesProps> = ({
             index === repliesLength - 1 ? "border-none" : "border-b"
           }`}
         >
-          <ShowName data={reply} locale={locale} />
+          <ShowName 
+          //@ts-ignore
+          data={reply} 
+          locale={locale} />
           <p className="px-5 py-2">{reply.body}</p>
         </div>
       ))}

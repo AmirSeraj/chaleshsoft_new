@@ -10,6 +10,7 @@ const register_path = process.env.NEXT_PUBLIC_APP_URL_API + "/auth/register";
 /**PATH */
 
 /**register user */
+//@ts-ignore
 export const register: (values: z.infer<typeof RegisterSchema>) => Promise<{
   error: string | false;
   success: string | false;

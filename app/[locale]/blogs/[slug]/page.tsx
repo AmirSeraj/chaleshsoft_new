@@ -1,5 +1,4 @@
 import BlogInfo from "@/components/Blogs/BlogInfo/BlogInfo";
-import Head from "next/head";
 import { Suspense } from "react";
 import SingleSlugSkeleton from "./SingleSlugSkeleton";
 import { fetchSingleArticle } from "@/lib/actions/blog/fetchSingleBlog";
@@ -29,7 +28,7 @@ export default async function Page({ params: { slug, locale } }: Props) {
   const { t, resources } = await initTranslations(locale, i18Namespaces);
   const session = await getSession();
   const isLoggedIn = session.isLoggedIn;
-  const user = session.user;
+  const user = session.isLoggedIn ? session.user : undefined;
 
   return (
     <>
@@ -43,6 +42,7 @@ export default async function Page({ params: { slug, locale } }: Props) {
             article={data}
             locale={locale}
             isLoggedIn={isLoggedIn}
+          //@ts-ignore
             user={user}
           />
         </TranslationsProvider>

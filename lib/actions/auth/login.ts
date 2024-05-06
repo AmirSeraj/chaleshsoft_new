@@ -12,6 +12,7 @@ const login_path = process.env.NEXT_PUBLIC_APP_URL_API + "/auth/login";
 /**PATH */
 
 /**login */
+//@ts-ignore
 export const login: (values: z.infer<typeof LoginSchema>) => Promise<{
   error: string | false;
   success: string | false;
@@ -35,8 +36,6 @@ export const login: (values: z.infer<typeof LoginSchema>) => Promise<{
       method: "GET",
       credentials: "include", //Include credentials for cross-origin requests
     });
-
-    console.log(csrf_response);
 
     if (csrf_response.ok) {
       try {

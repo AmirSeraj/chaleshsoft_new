@@ -73,13 +73,11 @@ const Slider = ({ data, locale }: dataProps) => {
                 {item.text.split(" ").map((word, wordIndex, array) => (
                   <span
                     key={wordIndex}
-                    className="md:items-start items-center"
-                    style={{
-                      display:
-                        (wordIndex === 0 && "flex") ||
-                        (wordIndex === array.length - 1 && "flex"),
-                      gap: "2px",
-                    }}
+                    className={clsx(
+                      "md:items-start items-center",
+                      (wordIndex === 0 || wordIndex === array.length - 1) &&
+                        "flex gap-1"
+                    )}
                   >
                     {wordIndex === 0 && (
                       <Image

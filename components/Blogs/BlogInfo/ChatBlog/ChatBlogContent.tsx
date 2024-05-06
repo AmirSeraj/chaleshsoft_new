@@ -56,7 +56,9 @@ const ChatBlog = ({
           comments?.map((item, index) => (
             <ShowComments
               key={index}
+              //@ts-ignore
               comment={item}
+              //@ts-ignore
               locale={locale}
               articleId={articleId}
               article_slug={article_slug}

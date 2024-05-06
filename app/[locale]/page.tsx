@@ -35,7 +35,7 @@ export default async function Home({
         <LayoutSection4 />
         {/* features */}
         <LayoutSection5 features={landing.features} />
-        <LayoutSection6 articles={landing.articles} news={landing.news} />
+        <LayoutSection6 articles={landing.articles} news={landing.news} locale={locale} />
         <LayoutSection7 locale={locale} />
         <LayoutSection8 />
         <LayoutSection9 />

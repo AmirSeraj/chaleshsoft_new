@@ -52,7 +52,9 @@ const ShowComments = ({
 
   return (
     <div className="flex flex-col p-3 border-b border-slate-400 gap-2">
-      <ShowName data={comment} locale={locale} />
+      <ShowName 
+      //@ts-ignore
+      data={comment} locale={locale} />
 
       <span
         className="mt-3 text-[0.75rem]"

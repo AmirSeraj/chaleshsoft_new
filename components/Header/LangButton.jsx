@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import ButtonCustom from "../buttonCustom";
+import ButtonCustom from "../ButtonCustom";
 import { GrLanguage } from "react-icons/gr";
 import { IoIosCheckmark } from "react-icons/io";
 import { usePathname, useRouter } from "next/navigation";
