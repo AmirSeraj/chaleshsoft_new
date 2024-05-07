@@ -6,6 +6,7 @@ import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/providers/TranslationsProvider";
 import { getSession } from "@/lib/actions/getSession";
 import { Metadata, ResolvingMetadata } from "next";
+import { fetchGetUserInfo } from "@/lib/actions/blog/fetchGetUserInfo";
 
 type Props = {
   params: { slug: string; locale: string };
@@ -40,9 +41,10 @@ export default async function Page({ params: { slug, locale } }: Props) {
         >
           <BlogInfo
             article={data}
+            slug={slug}
             locale={locale}
             isLoggedIn={isLoggedIn}
-          //@ts-ignore
+            //@ts-ignore
             user={user}
           />
         </TranslationsProvider>

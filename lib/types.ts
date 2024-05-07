@@ -127,8 +127,10 @@ export interface ArticleProps {
 export interface BlogInfoProps {
   article: ArticleProps;
   locale: string;
+  slug: string;
   isLoggedIn?: boolean;
   user?: UserProps | undefined;
+  userInfo: { like: number; bookmark: number };
 }
 
 interface RepliesProps {
@@ -191,4 +193,17 @@ export interface CommentInfoProps {
 export interface FetchLikeProps {
   id?: number;
   type?: string;
+}
+
+export interface FetchGetUserInfoProps {
+  articleId?: number;
+  token?: string;
+}
+
+export interface BlogLikesProps {
+  likeNum?: number;
+  commentNum?: number;
+  setOpenComments: (openComments: boolean) => void;
+  openComments?: boolean;
+  article: ArticleProps;
 }

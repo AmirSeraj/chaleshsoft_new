@@ -1,4 +1,5 @@
 import { logout } from "@/lib/actions/auth/logout";
+import { headers } from "next/headers";
 import React from "react";
 
 const LogoutForm = async ({ title }: { title: string }) => {

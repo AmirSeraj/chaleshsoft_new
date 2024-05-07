@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import LoginFormServerSide from "./LoginFormServerSide";
 import { login } from "@/lib/actions/auth/login";
 import { useTranslation } from "react-i18next";
+import { useParams, useSearchParams } from "next/navigation";
 
 const LoginForm = ({ locale }: { locale: string }) => {
   const [error, setError] = useState<string | false | undefined>("");
@@ -16,6 +17,9 @@ const LoginForm = ({ locale }: { locale: string }) => {
   const [isPending, startTransition] = useTransition();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { t } = useTranslation();
+  const searchParams = useSearchParams();
+  const params = searchParams.get("redirect");
+  // console.log('params',params.get("redirect"));
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -30,7 +34,7 @@ const LoginForm = ({ locale }: { locale: string }) => {
     setSuccess("");
     setLoading(true);
     startTransition(() => {
-      login(values).then((data) => {
+      login(values, params).then((data) => {
         setError(data?.error);
         setSuccess(data?.success);
         setLoading(false);

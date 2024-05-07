@@ -1,36 +1,76 @@
 import { FaHandsClapping } from "react-icons/fa6";
 import { FaRegComment } from "react-icons/fa";
-import { ArticleProps } from "@/lib/types";
+import { BlogLikesProps, FetchGetUserInfoProps } from "@/lib/types";
 import { fetchLike } from "@/lib/actions/blog/fetchLike";
+import clsx from "clsx";
+import { fetchGetUserInfo } from "@/lib/actions/blog/fetchGetUserInfo";
+import { getSession } from "@/lib/actions/getSession";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
-interface BlogLikesProps {
-  likeNum?: number;
-  commentNum?: number;
-  setOpenComments: (openComments: boolean) => void;
-  openComments?: boolean;
-  article: ArticleProps;
-}
-
-const BlogLikes = async ({
+const BlogLikes = ({
   likeNum,
   commentNum,
   setOpenComments,
   openComments,
   article,
 }: BlogLikesProps) => {
-  const handleClapping = async () => {
-    const data = {
-      type: "article",
-      id: article.id,
+  const [clickCount, setClickCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(likeNum);
+  const [userLikeStatus, setUserLikeStatus] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleClapping = async () => {
+      const session = await getSession();
+      if (!session.isLoggedIn) {
+        router.push(`/login?redirect=` + pathname);
+        return;
+      }
+      try {
+        const res = await fetchLike({ type: "article", id: article.id });
+        if (res.status === "success") {
+          if (!userLikeStatus) {
+            setLikeCount((prevLikeNum) => (prevLikeNum ?? 0) + 1);
+            setUserLikeStatus(true);
+          } else {
+            setLikeCount((prevLikeNum) => (prevLikeNum ?? 0) - 1);
+            setUserLikeStatus(false);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
-    try {
-      const res = await fetchLike(data);
-      const response = res.json();
-      console.log('re',response);
-    } catch (error) {
-      console.log(error);
+    if (clickCount > 0) {
+      handleClapping();
     }
+  }, [article.id, clickCount]);
+
+  const handleClick = () => {
+    setClickCount((prevClickCount) => prevClickCount + 1);
   };
+
+  useEffect(() => {
+    const handleGetUserInfo = async () => {
+      const session = await getSession();
+      const data: FetchGetUserInfoProps = {
+        articleId: article.id,
+        token: session.token,
+      };
+      if (session.isLoggedIn) {
+        const userInfo = await fetchGetUserInfo(data);
+        if (userInfo.like === 1) {
+          setUserLikeStatus(true);
+          // setLikeCount((prevLikeNum) => (prevLikeNum ?? 0) + 1);
+        } else {
+          setUserLikeStatus(false);
+        }
+      }
+    };
+    handleGetUserInfo();
+  }, [article.id, clickCount]);
 
   return (
     <div className="border-y border-slate-500 p-4">
@@ -39,9 +79,17 @@ const BlogLikes = async ({
         <div className="flex items-center gap-2">
           <FaHandsClapping
             className="cursor-pointer"
-            onClick={handleClapping}
+            onClick={handleClick}
+            color={clsx(userLikeStatus ? "#515157" : "#fff")}
           />
-          <span className="text-[#c0c0c0] text-[0.7rem]">{likeNum}</span>
+          <span
+            className={clsx(
+              "text-[0.7rem]",
+              userLikeStatus ? "text-[#515157]" : "text-[#fff]"
+            )}
+          >
+            {likeCount}
+          </span>
         </div>
         {/* comments */}
         <div className="flex items-center gap-2">

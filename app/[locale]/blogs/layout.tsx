@@ -14,6 +14,7 @@ export default function BlogLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  
   return (
     <div className={styles.container}>
       <Header locale={locale} />

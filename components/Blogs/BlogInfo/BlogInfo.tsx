@@ -10,9 +10,14 @@ import ChatBlog from "./ChatBlog/ChatBlogContent";
 import { useState } from "react";
 import { BlogInfoProps } from "@/lib/types";
 
-
-
-const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
+const BlogInfo = ({
+  article,
+  locale,
+  isLoggedIn,
+  user,
+  // userInfo,
+  slug
+}: BlogInfoProps) => {
   const { t } = useTranslation();
   const [openComments, setOpenComments] = useState(false);
 
@@ -36,7 +41,9 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
         <BlogLikes
           setOpenComments={setOpenComments}
           article={article}
+          // slug={slug}
           likeNum={article?.liked_count}
+          // likeStatus={userInfo.like}
           commentNum={article?.comments_count}
           openComments={openComments}
         />
@@ -55,12 +62,13 @@ const BlogInfo = ({ article, locale, isLoggedIn, user }: BlogInfoProps) => {
         />
 
         <div className="flex flex-wrap gap-2 w-full">
-          {article?.tags && article?.tags.map((item, index) => (
-            <CategoriesRelatedToThisBlog
-              key={index}
-              categoryName={item?.title ?? ""}
-            />
-          ))}
+          {article?.tags &&
+            article?.tags.map((item, index) => (
+              <CategoriesRelatedToThisBlog
+                key={index}
+                categoryName={item?.title ?? ""}
+              />
+            ))}
         </div>
 
         {/* chats comes here */}

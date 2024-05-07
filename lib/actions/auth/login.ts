@@ -7,17 +7,21 @@ import { LoggedInUser } from "./loggedInUser";
 import { redirect } from "next/navigation";
 
 /**PATH */
-const sanctum_path = process.env.NEXT_PUBLIC_APP_URL_SANCTUM + "/sanctum/csrf-cookie";
+const sanctum_path =
+  process.env.NEXT_PUBLIC_APP_URL_SANCTUM + "/sanctum/csrf-cookie";
 const login_path = process.env.NEXT_PUBLIC_APP_URL_API + "/auth/login";
 /**PATH */
 
 /**login */
 //@ts-ignore
-export const login: (values: z.infer<typeof LoginSchema>) => Promise<{
+export const login: (
+  values?: z.infer<typeof LoginSchema>,
+  params?: any
+) => Promise<{
   error: string | false;
   success: string | false;
   // isLoading: false;
-}> = async (values: z.infer<typeof LoginSchema>) => {
+}> = async (values: z.infer<typeof LoginSchema>, params) => {
   ///data validation
   const validatedFields = LoginSchema.safeParse(values);
   if (!validatedFields.success) {
@@ -51,13 +55,12 @@ export const login: (values: z.infer<typeof LoginSchema>) => Promise<{
           }),
         });
         const response = await res.json();
-        console.log("ress", response);
 
         if (response.status === "error") {
           return {
             error: response.message,
             success: false,
-          }
+          };
         }
 
         if (response.status === "success") {
@@ -85,6 +88,10 @@ export const login: (values: z.infer<typeof LoginSchema>) => Promise<{
     };
   }
   if (session.isLoggedIn) {
-    redirect("/dashboard");
+    if (params) {
+      redirect(params);
+    } else {
+      redirect("/dashboard");
+    }
   }
 };

@@ -11,7 +11,11 @@ import { getSession } from "@/lib/actions/getSession";
 import { IronSession } from "iron-session";
 import { SessionData } from "@/lib/authConfig";
 
-const Header = async ({ locale }: { locale?: string }) => {
+const Header = async ({
+  locale,
+}: {
+  locale?: string;
+}) => {
   const { t } = await initTranslations(locale, ["common"]);
   const session: IronSession<SessionData> = await getSession();
 
@@ -25,7 +29,9 @@ const Header = async ({ locale }: { locale?: string }) => {
 
         <div className="flex gap-2 items-center">
           {session?.isLoggedIn && (
-            <Link href={"/dashboard"} className="text-white">{session?.user?.name}</Link>
+            <Link href={"/dashboard"} className="text-white">
+              {session?.user?.name}
+            </Link>
           )}
           <LangButton />
           <ButtonCustom className="text-white flex items-center gap-1 border shadow !border-slate-500">
