@@ -3,6 +3,7 @@ import BackButton from "@/components/auth/BackButton";
 import Social from "@/components/auth/Social";
 import { Header } from "@/components/auth/Header";
 import { CardWrapperProps } from "@/lib/types";
+import Divider from "../Divider";
 
 
 
@@ -22,7 +23,8 @@ export const CardWrapper = ({
       </CardHeader>
       <CardContent>{children}</CardContent>
       {showSocial && (
-        <CardFooter>
+        <CardFooter className="flex flex-col">
+          <Divider />
           <Social />
         </CardFooter>
       )}
